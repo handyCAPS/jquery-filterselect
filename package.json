@@ -1,0 +1,25 @@
+{
+  "name": "jquery-filterselect",
+  "version": "1.0.0",
+  "description": "A jQuery plugin to filter a select box by the value(s) of another select box",
+  "main": "filterselect.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/handyCAPS/jquery-filterselect.git"
+  },
+  "keywords": [
+    "jQuery",
+    "plugin",
+    "filter",
+    "select"
+  ],
+  "author": "Tim Doppenberg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/handyCAPS/jquery-filterselect/issues"
+  },
+  "homepage": "https://github.com/handyCAPS/jquery-filterselect#readme"
+}
