@@ -113,7 +113,7 @@
 
         return this.each(function(index, sel) {
         	// If this select has no reference, no need to filter anything
-        	if (!$(sel).find('option').data(settings.dataString.reference)) { return; }
+        	if ($(sel).find('option').data(settings.dataString.reference) === undefined) { return; }
         	var tgt = target;
         	if (noTargetSet) {
         		tgt = '#' + $(sel).data(settings.dataString.target);
