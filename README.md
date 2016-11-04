@@ -12,10 +12,15 @@ The `filter` select box should have a data-attribute which holds the value of a 
 
 The options of the `filter` should have a `data-reference` attribute and the `target` options should have a `data-belongsto` attribute. Any option in the `target` that doesn't have a `data-belongsto` value matching the selected `data-target` value gets filtered. See [demo](demo.html).
 
+The filter target can keep an empty value by adding a `data-allowempty` attribute to it. The value attribute to identify the empty option defaults to '-1'
+
 ## Options ##
 
 `target` String (optional)  
 CSS selector for the target element
+
+`emptyValue` String (optional)
+The value used to identify an empty option
 
 `dataString` Object (optional)  
 A plain js object describing alternative names for the data-attributes to be used. The following names can be changed:  

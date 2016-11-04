@@ -52,7 +52,8 @@
 			</div>
 
 			<div class="wrap">
-				<select size='30' class='list filterSelect' data-target='select-name' id='select-family'>
+				<select size='30' class='list filterSelect' data-target='select-name' id='select-family' data-allowempty>
+					<option value="-1" disabled="">---</option>
 					<option value='1'  data-reference='1' data-belongsto='1'>Bergnaum</option>
 					<option value='2'  data-reference='2' data-belongsto='1'>Ankunding</option>
 					<option value='3'  data-reference='3' data-belongsto='1'>Schultz</option>
@@ -155,6 +156,7 @@
 				
 			<div class="wrap">
 				<select size='30' class='list' id='select-name'>
+					<option value="-1">---</option>
 					<option value='1005' data-belongsto='1'>Ana Bergnaum - London</option>
 					<option value='1006' data-belongsto='1'>Ana Bergnaum - London</option>
 					<option value='1007' data-belongsto='1'>Eda Bergnaum - London</option>
@@ -1140,7 +1142,9 @@
 	<script src="filterselect.js"></script>
 
 	<script type="text/javascript">
-		$('.filterSelect').filterSelect();
+		$('.filterSelect').filterSelect({
+			allowEmpty: true
+		});
 	</script>
 
 </body>

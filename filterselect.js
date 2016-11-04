@@ -31,6 +31,7 @@
 			};
 
 		var settings = $.extend({
+			emptyValue: '-1',
 			dataString: defaultDataString
 		}, optionsObject);
 
@@ -86,6 +87,12 @@
 			return result;
 		}
 
+		function filterEmptyFromNonBelongers(nonBelongers) {
+			return [].filter.call(nonBelongers, function(option) {
+				return option.value != settings.emptyValue;
+			});
+		}
+
 		/**
 		 * Filters the target select based on the value of the filter select
 		 * @param  {string} filter CSS selector for the select to base filter on
@@ -97,14 +104,19 @@
  	            var targetSelect = $(tar);
  	            var targetOptions = targetSelect.find('option');
  	            var filterOptions = $(this).find('option:not(:hidden)');
+ 	            var emptyBelongs = targetSelect.data('allowempty') !== undefined;
 
  	            var selectedOption = $(this).find('option:selected');
  	            // if an option is selected, use that as the filter, otherwise use all options as filter
  	            var reference = selectedOption.length ? selectedOption.data(settings.dataString.reference) : getAllReferences(filterOptions);
  	            // Noneblongers get wrapped in jQuery Object
- 	            var nonBelongers = $(findNonBelongers(targetOptions, reference));
+ 	            var nonBelongers = findNonBelongers(targetOptions, reference, emptyBelongs);
 
- 	            showBelongingOptions(nonBelongers, targetSelect.find('option'));
+ 	            if (emptyBelongs) {
+ 	            	nonBelongers = filterEmptyFromNonBelongers(nonBelongers);
+ 	            }
+
+ 	            showBelongingOptions($(nonBelongers), targetSelect.find('option'));
  	            // Triggering a change in the target select triggers filtering on subsequent targets.
  	            targetSelect.trigger('change');
 
@@ -113,7 +125,7 @@
 
         return this.each(function(index, sel) {
         	// If this select has no reference, no need to filter anything
-        	if ($(sel).find('option').data(settings.dataString.reference) === undefined) { return; }
+        	if ($(sel).find('option[value!="-1"]').data(settings.dataString.reference) === undefined) { return; }
         	var tgt = target;
         	if (noTargetSet) {
         		tgt = '#' + $(sel).data(settings.dataString.target);
