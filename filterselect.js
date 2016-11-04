@@ -118,7 +118,7 @@
         	}
 
         	if (!$(tgt).length) {
-        		return errorOut('filterSelect could not find a target!');
+        		return errorOut('filterSelect could not find a target! Selector is: ' + tgt);
         	}
 
         	filterIt(sel, tgt);
